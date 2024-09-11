@@ -1,0 +1,246 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Konto er allerede konfigurert",
+      "already_in_progress": "Konfigurasjonsprosess er allerede i gang",
+      "authorize_url_timeout": "Tidsavbrudd mens autorisasjons-URL ble generert.",
+      "missing_configuration": "Komponenten er ikke konfigurert. Vennligst følg dokumentasjonen.",
+      "no_url_available": "Ingen URL tilgjengelig. For mer informasjon rundt denne feilen, [sjekk hjelp-delen]({docs_url})",
+      "oauth_error": "Mottok ugyldig nøkkeldata.",
+      "user_rejected_authorize": "Kontotilkobling avvist: {error}"
+    },
+    "create_entry": {
+      "default": "Autentisering vellykket"
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Velg metode for autentisering"
+      },
+      "options": {
+        "data": {
+          "fetch_firmware": "Hent fastvareinformasjon fra API?",
+          "fetch_notifications": "Hente varsler fra API?",
+          "scan_interval": "Skanneintervall (sekunder)",
+          "expert_mode": "Ekspertmodus"
+        },
+        "data_description": {
+          "fetch_firmware": "Krever et ekstra API-kall.",
+          "fetch_notifications": "Krever et ekstra API-kall.",
+          "expert_mode": "Konfigurer avanserte alternativer."
+        }
+      },
+      "expert": {
+        "title": "Ekspertinnstillinger",
+        "data": {
+          "platform_override": "Plattformoverstyringer",
+          "writable_override": "Skrivbare overstyringer",
+          "parameter_whitelist": "Parameterhviteliste",
+          "additional_parameter": "Tilleggsparameter"
+        },
+        "data_description": {
+          "platform_override": "Tving frem en spesifikk plattform for en gitt parameter-ID.\n\nDette er noen ganger nødvendig hvis myUplink API gir feil parameterdata og integrasjonen oppdager feil plattform.\n\nMå være gyldig JSON. For å gjenopprette standarden, ugyldiggjør feltet og lagre. Et tomt felt vil ikke forårsake noen endring.",
+          "writable_override": "Sett spesifikk parameter til skrivbar eller ikke skrivbar.\n\nDette er noen ganger nødvendig hvis myUplink API gir feil tilstand for parameteralternativet `writable`.\n\nMå være gyldig JSON. For å gjenopprette standarden, ugyldiggjør feltet og lagre. Et tomt felt vil ikke forårsake noen endring.",
+          "parameter_whitelist": "Begrensning av de forespurte parameterne til en spesifikk liste med parameter-ID-er.\n\nDette kan være nyttig hvis myUplink API gir et ekstremt stort antall parametere, hvorav noen er uviktige, og du ønsker å begrense den tilgjengelige listen over parametere.\n\nListe over parameter-ID-er atskilt med komma. En tom liste resulterer ikke i noen begrensning. Må være gyldig JSON. For å gjenopprette standarden, ugyldiggjør feltet og lagre. Et tomt felt resulterer ikke i noen endring.",
+          "additional_parameter": "Legg til flere parameter-IDer i spørringen.\n\nI ekstremt sjeldne tilfeller gir ikke myUplink API alle tilgjengelige parametere. Med denne listen er det mulig å legge til kjente parameter-IDer, som deretter spørres direkte.\n\nKommaseparert liste over parameter-ID-er. En tom liste medfører ingen restriksjoner. Må være gyldig JSON. For å gjenopprette standarden, ugyldiggjør feltet og lagre. Et tomt felt resulterer ikke i noen endringer."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "406": {
+        "state": {
+          "0": "Test",
+          "1": "Av",
+          "2": "Hvilemodus",
+          "3": "Øko",
+          "4": "Normal",
+          "5": "Ekspress",
+          "6": "Pris",
+          "7": "Timeplan",
+          "8": "Ekstern",
+          "9": "Legionella",
+          "10": "Ferie",
+          "11": "Boost",
+          "Boost": "Boost",
+          "Eco": "Øko",
+          "Express": "Ekspress",
+          "External": "Ekstern",
+          "Legionella": "Legionella",
+          "Normal": "Normal",
+          "Off": "Av",
+          "Price": "Pris",
+          "Schedule": "Timeplan",
+          "Sleep": "Hvilemodus",
+          "Test": "Test",
+          "Vacation": "Ferie"
+        }
+      },
+      "500": {
+        "state": {
+          "3": "Øko",
+          "4": "Normal",
+          "6": "Pris",
+          "7": "Timeplan",
+          "8": "Ekstern",
+          "10": "Ferie",
+          "11": "Boost",
+          "Boost": "Boost",
+          "Eco": "Øko",
+          "External": "Ekstern",
+          "Normal": "Normal",
+          "Price": "Pris",
+          "Schedule": "Timeplan",
+          "Vacation": "Ferie"
+        }
+      },
+      "517": {
+        "state": {
+          "0": "0",
+          "1": "700W",
+          "2": "1300W",
+          "3": "2000W"
+        }
+      },
+      "544": {
+        "state": {
+          "1": "NO1",
+          "2": "NO2",
+          "3": "NO3",
+          "4": "NO4",
+          "5": "NO5"
+        }
+      },
+      "549": {
+        "state": {
+          "0": "Ukjent",
+          "1": "Billig",
+          "2": "Normal",
+          "3": "Dyr",
+          "Cheap": "Billig",
+          "Expensive": "Dyr",
+          "Normal": "Normal",
+          "Unknown": "Ukjent"
+        }
+      },
+      "601": {
+        "state": {
+          "1": "varme",
+          "heat": "varme"
+        }
+      },
+      "1965": {
+        "state": {
+          "20": "Av",
+          "40": "Starter",
+          "60": "På",
+          "100": "Stopper",
+          "120": "Avrimer",
+          "140": "Avrimer",
+          "160": "Avrimer",
+          "Defrosting": "Avrimer",
+          "Off": "Av",
+          "On": "På",
+          "Starting": "Starter",
+          "Stopping": "Stopper"
+        }
+      },
+      "14950": {
+        "state": {
+          "0": "Av",
+          "1": "Varmer",
+          "2": "Avkjøler",
+          "3": "Varmtvann",
+          "4": "Pool",
+          "5": "Pool 2",
+          "6": "Forvarmer",
+          "Cooling": "Avkjøler",
+          "Heating": "Varmer",
+          "Hot water": "Varmtvann",
+          "Off": "Av",
+          "Pool 2": "Pool 2",
+          "Pool": "Pool",
+          "Preheating": "Forvarmer"
+        }
+      },
+      "55000": {
+        "state": {
+          "10": "Av",
+          "20": "Varmtvann",
+          "30": "Varmer",
+          "40": "Pool",
+          "41": "Pool 2",
+          "50": "Overføring",
+          "60": "Avkjøler",
+          "Cooling": "Avkjøling",
+          "Heating": "Varmer",
+          "Hot water": "Varmtvann",
+          "Off": "Av",
+          "Pool 2": "Pool 2",
+          "Pool": "Pool",
+          "Transfer": "Øverføring"
+        }
+      },
+      "55027": {
+        "state": {
+          "0": "Alarm",
+          "1": "Alarm",
+          "2": "Aktiv",
+          "3": "Av",
+          "4": "Blokkert",
+          "5": "Av",
+          "6": "Aktiv",
+          "Active": "Aktiv",
+          "Alarm": "Alarm",
+          "Blocked": "Blokkert",
+          "Off": "Av"
+        }
+      },
+      "myuplink_notifications": {
+        "name": "Varsler"
+      }
+    },
+    "binary_sensor": {
+      "myuplink_connection_state": {
+        "name": "Tilkoblingstilstand"
+      }
+    },
+    "update": {
+      "myuplink_firmware": {
+        "name": "Fastvare"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "options": {
+        "data": {
+          "fetch_firmware": "Hent fastvareinformasjon fra API?",
+          "fetch_notifications": "Hente varsler fra API?",
+          "scan_interval": "Skanneintervall (sekunder)",
+          "expert_mode": "Ekspertmodus"
+        },
+        "data_description": {
+          "fetch_firmware": "Krever et ekstra API-kall.",
+          "fetch_notifications": "Krever et ekstra API-kall.",
+          "expert_mode": "Konfigurer avanserte alternativer."
+        }
+      },
+      "expert": {
+        "title": "Ekspertinnstillinger",
+        "data": {
+          "platform_override": "Plattformoverstyringer",
+          "writable_override": "Skrivbare overstyringer",
+          "parameter_whitelist": "Parameterhviteliste",
+          "additional_parameter": "Tilleggsparameter"
+        },
+        "data_description": {
+          "platform_override": "Tving frem en spesifikk plattform for en gitt parameter-ID.\n\nDette er noen ganger nødvendig hvis myUplink API gir feil parameterdata og integrasjonen oppdager feil plattform.\n\nMå være gyldig JSON. For å gjenopprette standarden, ugyldiggjør feltet og lagre. Et tomt felt vil ikke forårsake noen endring.",
+          "writable_override": "Sett spesifikk parameter til skrivbar eller ikke skrivbar.\n\nDette er noen ganger nødvendig hvis myUplink API gir feil tilstand for parameteralternativet `writable`.\n\nMå være gyldig JSON. For å gjenopprette standarden, ugyldiggjør feltet og lagre. Et tomt felt vil ikke forårsake noen endring.",
+          "parameter_whitelist": "Begrensning av de forespurte parameterne til en spesifikk liste med parameter-ID-er.\n\nDette kan være nyttig hvis myUplink API gir et ekstremt stort antall parametere, hvorav noen er uviktige, og du ønsker å begrense den tilgjengelige listen over parametere.\n\nListe over parameter-ID-er atskilt med komma. En tom liste resulterer ikke i noen begrensning. Må være gyldig JSON. For å gjenopprette standarden, ugyldiggjør feltet og lagre. Et tomt felt resulterer ikke i noen endring.",
+          "additional_parameter": "Legg til flere parameter-IDer i spørringen.\n\nI ekstremt sjeldne tilfeller gir ikke myUplink API alle tilgjengelige parametere. Med denne listen er det mulig å legge til kjente parameter-IDer, som deretter spørres direkte.\n\nKommaseparert liste over parameter-ID-er. En tom liste medfører ingen restriksjoner. Må være gyldig JSON. For å gjenopprette standarden, ugyldiggjør feltet og lagre. Et tomt felt resulterer ikke i noen endringer."
+        }
+      }
+    }
+  }
+}

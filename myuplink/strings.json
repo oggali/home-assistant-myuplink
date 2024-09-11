@@ -1,0 +1,199 @@
+{
+  "config": {
+    "step": {
+      "pick_implementation": {
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "options": {
+        "data": {
+          "fetch_firmware": "Fetch Firmware Info from API?",
+          "fetch_notifications": "Fetch Notifications from API?",
+          "scan_interval": "Scan Interval (seconds)",
+          "expert_mode": "Expert Mode"
+        },
+        "data_description": {
+          "fetch_firmware": "Requires an additional API call.",
+          "fetch_notifications": "Requires an additional API call.",
+          "expert_mode": "Configure advanced options."
+        }
+      },
+      "expert": {
+        "title": "Expert Settings",
+        "data": {
+          "platform_override": "Platform Overrides",
+          "writable_override": "Writable Overrides",
+          "parameter_whitelist": "Parameter Whitelist",
+          "additional_parameter": "Additional Parameter"
+        },
+        "data_description": {
+          "platform_override": "Force a specific platform for a given parameter ID.\n\nThis is sometimes necessary if the myUplink API provides incorrect parameter data and the integration detects the wrong platform.\n\nMust be valid JSON. To restore the default, invalidate the field and save. An empty field will cause no change.",
+          "writable_override": "Set specific parameter to writeable or not writeable.\n\nThis is sometimes necessary if the myUplink API provides the wrong state for the paramter option `writable`.\n\nMust be valid JSON. To restore the default, invalidate the field and save. An empty field will cause no change.",
+          "parameter_whitelist": "Restriction of the requested parameters to a specific list of parameter IDs.\n\nThis can be useful if the myUplink API provides an extremely large number of parameters, some of which are unimportant, and you want to restrict the available list of parameters.\n\nList of parameter IDs separated by commas. An empty list does not result in any restriction. Must be valid JSON. To restore the default, invalidate the field and save. An empty field does not result in any change.",
+          "additional_parameter": "Add additional parameter IDs to the query.\n\nIn extremely rare cases, the myUplink API does not provide all available parameters. With this list, it is possible to add known parameter IDs, which are then queried directly.\n\nComma-separated list of parameter IDs. An empty list does not result in any restrictions. Must be valid JSON. To restore the default, invalidate the field and save. An empty field does not result in any changes."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]"
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "406": {
+        "state": {
+          "0": "Test",
+          "1": "Off",
+          "2": "Sleep",
+          "3": "Eco",
+          "4": "Normal",
+          "5": "Express",
+          "6": "Price",
+          "7": "Schedule",
+          "8": "External",
+          "9": "Legionella",
+          "10": "Vacation",
+          "11": "Boost"
+        }
+      },
+      "500": {
+        "state": {
+          "3": "Eco",
+          "4": "Normal",
+          "6": "Price",
+          "7": "Schedule",
+          "8": "External",
+          "10": "Vacation",
+          "11": "Boost"
+        }
+      },
+      "517": {
+        "state": {
+          "0": "0",
+          "1": "700W",
+          "2": "1300W",
+          "3": "2000W"
+        }
+      },
+      "544": {
+        "state": {
+          "1": "NO1",
+          "2": "NO2",
+          "3": "NO3",
+          "4": "NO4",
+          "5": "NO5"
+        }
+      },
+      "549": {
+        "state": {
+          "0": "Unknown",
+          "1": "Cheap",
+          "2": "Normal",
+          "3": "Expensive"
+        }
+      },
+      "601": {
+        "state": {
+          "1": "heat"
+        }
+      },
+      "1965": {
+        "state": {
+          "20": "Off",
+          "40": "Starting",
+          "60": "On",
+          "100": "Stopping",
+          "120": "Defrosting",
+          "140": "Defrosting",
+          "160": "Defrosting"
+        }
+      },
+      "14950": {
+        "state": {
+          "0": "Off",
+          "1": "Heating",
+          "2": "Cooling",
+          "3": "Hot water",
+          "4": "Pool",
+          "5": "Pool 2",
+          "6": "Preheating"
+        }
+      },
+      "55000": {
+        "state": {
+          "10": "Off",
+          "20": "Hot water",
+          "30": "Heating",
+          "40": "Pool",
+          "41": "Pool 2",
+          "50": "Transfer",
+          "60": "Cooling"
+        }
+      },
+      "55027": {
+        "state": {
+          "0": "Alarm",
+          "1": "Alarm",
+          "2": "Active",
+          "3": "Off",
+          "4": "Blocked",
+          "5": "Off",
+          "6": "Active"
+        }
+      },
+      "myuplink_notifications": {
+        "name": "Notifications"
+      }
+    },
+    "binary_sensor": {
+      "myuplink_connection_state": {
+        "name": "Connection State"
+      }
+    },
+    "update": {
+      "myuplink_firmware": {
+        "name": "Firmware"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "options": {
+        "data": {
+          "fetch_firmware": "Fetch Firmware Info from API?",
+          "fetch_notifications": "Fetch Notifications from API?",
+          "scan_interval": "Scan Interval (seconds)",
+          "expert_mode": "Expert Mode"
+        },
+        "data_description": {
+          "fetch_firmware": "Requires an additional API call.",
+          "fetch_notifications": "Requires an additional API call.",
+          "expert_mode": "Configure advanced options."
+        }
+      },
+      "expert": {
+        "title": "Expert Settings",
+        "data": {
+          "platform_override": "Platform Overrides",
+          "writable_override": "Writable Overrides",
+          "parameter_whitelist": "Parameter Whitelist",
+          "additional_parameter": "Additional Parameter"
+        },
+        "data_description": {
+          "platform_override": "Force a specific platform for a given parameter ID.\n\nThis is sometimes necessary if the myUplink API provides incorrect parameter data and the integration detects the wrong platform.\n\nMust be valid JSON. To restore the default, invalidate the field and save. An empty field will cause no change.",
+          "writable_override": "Set specific parameter to writeable or not writeable.\n\nThis is sometimes necessary if the myUplink API provides the wrong state for the paramter option `writable`.\n\nMust be valid JSON. To restore the default, invalidate the field and save. An empty field will cause no change.",
+          "parameter_whitelist": "Restriction of the requested parameters to a specific list of parameter IDs.\n\nThis can be useful if the myUplink API provides an extremely large number of parameters, some of which are unimportant, and you want to restrict the available list of parameters.\n\nList of parameter IDs separated by commas. An empty list does not result in any restriction. Must be valid JSON. To restore the default, invalidate the field and save. An empty field does not result in any change.",
+          "additional_parameter": "Add additional parameter IDs to the query.\n\nIn extremely rare cases, the myUplink API does not provide all available parameters. With this list, it is possible to add known parameter IDs, which are then queried directly.\n\nComma-separated list of parameter IDs. An empty list does not result in any restrictions. Must be valid JSON. To restore the default, invalidate the field and save. An empty field does not result in any changes."
+        }
+      }
+    }
+  }
+}

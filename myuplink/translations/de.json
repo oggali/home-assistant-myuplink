@@ -1,0 +1,165 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Konto ist bereits konfiguriert",
+      "already_in_progress": "Konfigurationsfluss ist bereits im Gange",
+      "authorize_url_timeout": "Zeitüberschreitung beim Generieren der Autorisierungs-URL.",
+      "missing_configuration": "Die Komponente ist nicht konfiguriert. Bitte folgen Sie der Dokumentation.",
+      "no_url_available": "Keine URL verfügbar. Informationen zu diesem Fehler finden Sie im [Hilfeabschnitt]({docs_url})",
+      "oauth_error": "Ungültige Tokendaten empfangen.",
+      "user_rejected_authorize": "Kontoverknüpfung abgelehnt: {error}"
+    },
+    "create_entry": {
+      "default": "Erfolgreich authentifiziert"
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Wählen Sie die Authentifizierungsmethode"
+      },
+      "options": {
+        "data": {
+          "fetch_firmware": "Firmware-Informationen von API abrufen?",
+          "fetch_notifications": "Benachrichtigungen von der API abrufen?",
+          "scan_interval": "Scanintervall (Sekunden)",
+          "expert_mode": "Expertenmodus"
+        },
+        "data_description": {
+          "fetch_firmware": "Erfordert einen zusätzlichen API-Aufruf.",
+          "fetch_notifications": "Erfordert einen zusätzlichen API-Aufruf.",
+          "expert_mode": "Erweiterte Optionen konfigurieren."
+        }
+      },
+      "expert": {
+        "title": "Experteneinstellungen",
+        "data": {
+          "platform_override": "Platform-Überschreibung",
+          "writable_override": "Schreibkarkeit",
+          "parameter_whitelist": "Parameter-Whitelist",
+          "additional_parameter": "Zusätzliche Parameter"
+        },
+        "data_description": {
+          "platform_override": "Erzwingen einer bestimmten Plattform für eine bestimmte Parameter-ID.\n\nDies ist manchmal erforderlich, wenn die myUplink-API falsche Parameterdaten bereitstellt und die Integration die falsche Plattform erkennt.\n\nMuss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung.",
+          "writable_override": "Setzen Sie bestimmte Parameter auf beschreibbar oder nicht beschreibbar.\n\nDies ist manchmal erforderlich, wenn die myUplink-API den falschen Status für die Parameteroption `writable` bereitstellt.\n\nMuss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung.",
+          "parameter_whitelist": "Einschränkung der abgefragten Parameter auf eine bestimmte List an Parameter IDs.\n\nDies kann sinnvoll sein, wenn die myUplink-API extrem viele und teilweise unwichtige Parameter liefert und man die verfügbare Liste an Parametern einschränken möchte.\n\nDurch Komma getrennte Liste von Parameter-IDs. Eine leer Liste führt zu keiner Einschränkung. Muss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung.",
+          "additional_parameter": "Zusätzliche Parameter IDs zur Abfrage hinzufügen.\n\nIn extrem seltenen Fällen liefert die myUplink-API nicht alle verfügbaren Parameter. Mit dieser Liste ist es möglich bekannte Parameter IDs zu ergänzen, die dann direkt abgefragt werden.\n\nDurch Komma getrennte Liste von Parameter-IDs. Eine leer Liste führt zu keiner Einschränkung. Muss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "1965": {
+        "state": {
+          "20": "Aus",
+          "40": "Startet",
+          "60": "Ein",
+          "100": "Stoppt",
+          "120": "Enteisung wird durchgeführt",
+          "140": "Enteisung wird durchgeführt",
+          "160": "Enteisung wird durchgeführt",
+          "Defrosting": "Enteisung wird durchgeführt",
+          "Off": "Aus",
+          "On": "Ein",
+          "Starting": "Startet",
+          "Stopping": "Stoppt"
+        }
+      },
+      "14950": {
+        "state": {
+          "0": "Aus",
+          "1": "Heizung",
+          "2": "Kühlung",
+          "3": "Brauchwasser",
+          "4": "Pool",
+          "5": "Pool 2",
+          "6": "Vorwärmung",
+          "Cooling": "Kühlung",
+          "Heating": "Heizung",
+          "Hot water": "Brauchwasser",
+          "Off": "Aus",
+          "Pool 2": "Pool 2",
+          "Pool": "Pool",
+          "Preheating": "Vorwärmung"
+        }
+      },
+      "55000": {
+        "state": {
+          "10": "Aus",
+          "20": "Brauchwasser",
+          "30": "Heizung",
+          "40": "Pool",
+          "41": "Pool 2",
+          "50": "Transfer",
+          "60": "Kühlung",
+          "Cooling": "Kühlung",
+          "Heating": "Heizung",
+          "Hot water": "Brauchwasser",
+          "Off": "Aus",
+          "Pool 2": "Pool 2",
+          "Pool": "Pool",
+          "Transfer": "Transfer"
+        }
+      },
+      "55027": {
+        "state": {
+          "0": "Alarm",
+          "1": "Alarm",
+          "2": "Aktiv",
+          "3": "Aus",
+          "4": "Blockiert",
+          "5": "Aus",
+          "6": "Aktiv",
+          "Active": "Aktiv",
+          "Alarm": "Alarm",
+          "Blocked": "Blockiert",
+          "Off": "Aus"
+        }
+      },
+      "myuplink_notifications": {
+        "name": "Benachrichtigungen"
+      }
+    },
+    "binary_sensor": {
+      "myuplink_connection_state": {
+        "name": "Verbindungsstatus"
+      }
+    },
+    "update": {
+      "myuplink_firmware": {
+        "name": "Firmware"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "options": {
+        "data": {
+          "fetch_firmware": "Firmware-Informationen von API abrufen?",
+          "fetch_notifications": "Benachrichtigungen von der API abrufen?",
+          "scan_interval": "Scanintervall (Sekunden)",
+          "expert_mode": "Expertenmodus"
+        },
+        "data_description": {
+          "fetch_firmware": "Erfordert einen zusätzlichen API-Aufruf.",
+          "fetch_notifications": "Erfordert einen zusätzlichen API-Aufruf.",
+          "expert_mode": "Erweiterte Optionen konfigurieren."
+        }
+      },
+      "expert": {
+        "title": "Experteneinstellungen",
+        "data": {
+          "platform_override": "Platform-Überschreibung",
+          "writable_override": "Schreibkarkeit",
+          "parameter_whitelist": "Parameter-Whitelist",
+          "additional_parameter": "Zusätzliche Parameter"
+        },
+        "data_description": {
+          "platform_override": "Erzwingen einer bestimmten Plattform für eine bestimmte Parameter-ID.\n\nDies ist manchmal erforderlich, wenn die myUplink-API falsche Parameterdaten bereitstellt und die Integration die falsche Plattform erkennt.\n\nMuss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung.",
+          "writable_override": "Setzen Sie bestimmte Parameter auf beschreibbar oder nicht beschreibbar.\n\nDies ist manchmal erforderlich, wenn die myUplink-API den falschen Status für die Parameteroption `writable` bereitstellt.\n\nMuss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung.",
+          "parameter_whitelist": "Einschränkung der abgefragten Parameter auf eine bestimmte List an Parameter IDs.\n\nDies kann sinnvoll sein, wenn die myUplink-API extrem viele und teilweise unwichtige Parameter liefert und man die verfügbare Liste an Parametern einschränken möchte.\n\nDurch Komma getrennte Liste von Parameter-IDs. Eine leer Liste führt zu keiner Einschränkung. Muss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung.",
+          "additional_parameter": "Zusätzliche Parameter IDs zur Abfrage hinzufügen.\n\nIn extrem seltenen Fällen liefert die myUplink-API nicht alle verfügbaren Parameter. Mit dieser Liste ist es möglich bekannte Parameter IDs zu ergänzen, die dann direkt abgefragt werden.\n\nDurch Komma getrennte Liste von Parameter-IDs. Eine leer Liste führt zu keiner Einschränkung. Muss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung."
+        }
+      }
+    }
+  }
+}
