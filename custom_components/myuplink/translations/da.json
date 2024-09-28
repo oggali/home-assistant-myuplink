@@ -18,14 +18,18 @@
       },
       "options": {
         "data": {
+          "enable_smart_home_mode": "Aktiver Smart Home Mode?",
           "fetch_firmware": "Hent firmwareoplysninger fra API?",
           "fetch_notifications": "Vil du hente meddelelser fra API?",
           "scan_interval": "Scan-interval (sekunder)",
+          "disconnected_available": "Vil du holde afbrudte parametre tilgængelige?",
           "expert_mode": "Eksperttilstand"
         },
         "data_description": {
-          "fetch_firmware": "Kræver et ekstra API-kald.",
-          "fetch_notifications": "Kræver et ekstra API-kald.",
+          "enable_smart_home_mode": "Smart Home Mode er en systemrelateret enhed i myUplink API.\n\nHvis et system kun har én enkelt enhed, vil Smart Home Mode blive føjet til denne enhed. Ellers vil Smart Home Mode blive tilføjet til en ekstra enhed, som er baseret på de tilgængelige systemoplysninger.\n\nUnderstøttelsen af ​​Smart Home Mode kræver et ekstra API-kald pr. system.",
+          "fetch_firmware": "Kræver et ekstra API-kald pr. enhed.",
+          "fetch_notifications": "Kræver et ekstra API-kald pr. system.",
+          "disconnected_available": "Vis parameterenheder for afbrudte enheder som `tilgængelige`.",
           "expert_mode": "Konfigurer avancerede indstillinger."
         }
       },
@@ -158,6 +162,18 @@
         "name": "Forbindelsestilstand"
       }
     },
+    "select": {
+      "myuplink_smart_home_mode": {
+        "name": "Smart Home Mode",
+        "state": {
+          "default": "Misligholdelse",
+          "normal": "Normal",
+          "away": "Væk",
+          "vacation": "Ferie",
+          "home": "Hjemme"
+        }
+      }
+    },
     "update": {
       "myuplink_firmware": {
         "name": "Firmware"
@@ -168,14 +184,18 @@
     "step": {
       "options": {
         "data": {
+          "enable_smart_home_mode": "Aktiver Smart Home Mode?",
           "fetch_firmware": "Hent firmwareoplysninger fra API?",
           "fetch_notifications": "Vil du hente meddelelser fra API?",
           "scan_interval": "Scan-interval (sekunder)",
+          "disconnected_available": "Vil du holde afbrudte parametre tilgængelige?",
           "expert_mode": "Eksperttilstand"
         },
         "data_description": {
-          "fetch_firmware": "Kræver et ekstra API-kald.",
-          "fetch_notifications": "Kræver et ekstra API-kald.",
+          "enable_smart_home_mode": "Smart Home Mode er en systemrelateret enhed i myUplink API.\n\nHvis et system kun har én enkelt enhed, vil Smart Home Mode blive føjet til denne enhed. Ellers vil Smart Home Mode blive tilføjet til en ekstra enhed, som er baseret på de tilgængelige systemoplysninger.\n\nUnderstøttelsen af ​​Smart Home Mode kræver et ekstra API-kald pr. system.",
+          "fetch_firmware": "Kræver et ekstra API-kald pr. enhed.",
+          "fetch_notifications": "Kræver et ekstra API-kald pr. system.",
+          "disconnected_available": "Vis parameterenheder for afbrudte enheder som `tilgængelige`.",
           "expert_mode": "Konfigurer avancerede indstillinger."
         }
       },
@@ -192,6 +212,26 @@
           "writable_override": "Indstil specifik parameter til skrivbar eller ikke skrivbar.\n\nDette er nogle gange nødvendigt, hvis myUplink API'et giver den forkerte tilstand for parameterindstillingen `writable`.\n\nSkal være gyldig JSON. For at gendanne standarden skal du ugyldiggøre feltet og gemme. Et tomt felt medfører ingen ændring.",
           "parameter_whitelist": "Begrænsning af de anmodede parametre til en specifik liste over parameter-id'er.\n\nDette kan være nyttigt, hvis myUplink API'en giver et ekstremt stort antal parametre, hvoraf nogle er ligegyldige, og du ønsker at begrænse den tilgængelige liste over parametre.\n\nListe over parameter-id'er adskilt af kommaer. En tom liste medfører ikke nogen begrænsning. Skal være gyldig JSON. For at gendanne standarden skal du ugyldiggøre feltet og gemme. Et tomt felt resulterer ikke i nogen ændring.",
           "additional_parameter": "Tilføj yderligere parameter-id'er til forespørgslen.\n\nI yderst sjældne tilfælde giver myUplink API ikke alle tilgængelige parametre. Med denne liste er det muligt at tilføje kendte parameter-id'er, som derefter forespørges direkte.\n\nKommasepareret liste over parameter-id'er. En tom liste medfører ingen begrænsninger. Skal være gyldig JSON. For at gendanne standarden skal du ugyldiggøre feltet og gemme. Et tomt felt medfører ingen ændringer."
+        }
+      }
+    }
+  },
+  "services": {
+    "set_device_parameter_value": {
+      "name": "Indstil enhedsparameter til værdi",
+      "description": "Tjeneste til at indstille eventuelle parametre identificeret af ID'et for en specifik enhed til den ønskede værdi.",
+      "fields": {
+        "device_id": {
+          "name": "myUplink-enhed",
+          "description": "Vælg den myUplink-enhed, parameteren tilhører."
+        },
+        "parameter_id": {
+          "name": "myUplink Parameter ID",
+          "description": "Indtast id'et for parameterpunktet i myUplink API'et."
+        },
+        "value": {
+          "name": "Værdi",
+          "description": "Indtast den værdi, der skal indstilles."
         }
       }
     }

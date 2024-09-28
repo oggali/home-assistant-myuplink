@@ -18,14 +18,18 @@
       },
       "options": {
         "data": {
+          "enable_smart_home_mode": "Smart-Home-Modus aktivieren?",
           "fetch_firmware": "Firmware-Informationen von API abrufen?",
           "fetch_notifications": "Benachrichtigungen von der API abrufen?",
           "scan_interval": "Scanintervall (Sekunden)",
+          "disconnected_available": "Getrennte Parameter verfügbar halten?",
           "expert_mode": "Expertenmodus"
         },
         "data_description": {
-          "fetch_firmware": "Erfordert einen zusätzlichen API-Aufruf.",
-          "fetch_notifications": "Erfordert einen zusätzlichen API-Aufruf.",
+          "enable_smart_home_mode": "Der Smart-Home-Modus ist eine systembezogene Entität in der myUplink-API.\n\nWenn ein System nur über ein einziges Gerät verfügt, wird der Smart-Home-Modus diesem Gerät hinzugefügt. Andernfalls wird der Smart-Home-Modus einem zusätzlichen Gerät hinzugfügt, dass auf den verfügbaren Systeminformationen basiert.\n\nDie Unterstützung des Smart-Home-Modus erfordert einen zusätzlichen API-Aufruf pro System.",
+          "fetch_firmware": "Erfordert einen zusätzlichen API-Aufruf pro Gerät.",
+          "fetch_notifications": "Erfordert einen zusätzlichen API-Aufruf pro System.",
+          "disconnected_available": "Parameterentitäten getrennter Geräte als `verfügbar` anzeigen.",
           "expert_mode": "Erweiterte Optionen konfigurieren."
         }
       },
@@ -124,6 +128,18 @@
         "name": "Verbindungsstatus"
       }
     },
+    "select": {
+      "myuplink_smart_home_mode": {
+        "name": "Smart-Home-Modus",
+        "state": {
+          "default": "Standard",
+          "normal": "Normal",
+          "away": "Abwesend",
+          "vacation": "Urlaub",
+          "home": "Zuhause"
+        }
+      }
+    },
     "update": {
       "myuplink_firmware": {
         "name": "Firmware"
@@ -134,14 +150,18 @@
     "step": {
       "options": {
         "data": {
+          "enable_smart_home_mode": "Smart-Home-Modus aktivieren?",
           "fetch_firmware": "Firmware-Informationen von API abrufen?",
           "fetch_notifications": "Benachrichtigungen von der API abrufen?",
           "scan_interval": "Scanintervall (Sekunden)",
+          "disconnected_available": "Getrennte Parameter verfügbar halten?",
           "expert_mode": "Expertenmodus"
         },
         "data_description": {
-          "fetch_firmware": "Erfordert einen zusätzlichen API-Aufruf.",
-          "fetch_notifications": "Erfordert einen zusätzlichen API-Aufruf.",
+          "enable_smart_home_mode": "Der Smart-Home-Modus ist eine systembezogene Entität in der myUplink-API.\n\nWenn ein System nur über ein einziges Gerät verfügt, wird der Smart-Home-Modus diesem Gerät hinzugefügt. Andernfalls wird der Smart-Home-Modus einem zusätzlichen Gerät hinzugfügt, dass auf den verfügbaren Systeminformationen basiert.\n\nDie Unterstützung des Smart-Home-Modus erfordert einen zusätzlichen API-Aufruf pro System.",
+          "fetch_firmware": "Erfordert einen zusätzlichen API-Aufruf pro Gerät.",
+          "fetch_notifications": "Erfordert einen zusätzlichen API-Aufruf pro System.",
+          "disconnected_available": "Parameterentitäten getrennter Geräte als `verfügbar` anzeigen.",
           "expert_mode": "Erweiterte Optionen konfigurieren."
         }
       },
@@ -158,6 +178,26 @@
           "writable_override": "Setzen Sie bestimmte Parameter auf beschreibbar oder nicht beschreibbar.\n\nDies ist manchmal erforderlich, wenn die myUplink-API den falschen Status für die Parameteroption `writable` bereitstellt.\n\nMuss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung.",
           "parameter_whitelist": "Einschränkung der abgefragten Parameter auf eine bestimmte List an Parameter IDs.\n\nDies kann sinnvoll sein, wenn die myUplink-API extrem viele und teilweise unwichtige Parameter liefert und man die verfügbare Liste an Parametern einschränken möchte.\n\nDurch Komma getrennte Liste von Parameter-IDs. Eine leer Liste führt zu keiner Einschränkung. Muss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung.",
           "additional_parameter": "Zusätzliche Parameter IDs zur Abfrage hinzufügen.\n\nIn extrem seltenen Fällen liefert die myUplink-API nicht alle verfügbaren Parameter. Mit dieser Liste ist es möglich bekannte Parameter IDs zu ergänzen, die dann direkt abgefragt werden.\n\nDurch Komma getrennte Liste von Parameter-IDs. Eine leer Liste führt zu keiner Einschränkung. Muss gültiges JSON sein. Um den Standard wiederherzustellen, das Feld ungültig machen und speichern. Ein leeres Feld führt zu keiner Änderung."
+        }
+      }
+    }
+  },
+  "services": {
+    "set_device_parameter_value": {
+      "name": "Geräteparameter auf Wert setzen",
+      "description": "Dienst zum Setzen jeglicher durch die ID identifizierter Parameter für ein bestimmtes Gerät auf den gewünschten Wert.",
+      "fields": {
+        "device_id": {
+          "name": "myUplink-Gerät",
+          "description": "Wählen Sie das myUplink-Gerät aus, zu dem der Parameter gehört."
+        },
+        "parameter_id": {
+          "name": "myUplink-Parameter-ID",
+          "description": "Geben Sie die ID des Parameterpunkts in der myUplink-API ein."
+        },
+        "value": {
+          "name": "Wert",
+          "description": "Geben Sie den festzulegenden Wert ein."
         }
       }
     }
