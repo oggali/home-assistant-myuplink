@@ -1,4 +1,4 @@
-# MyUplink integration for Home Assistant
+# MyUplink integration for Home Assistant own fork
 
 [![Version](https://img.shields.io/github/v/release/jaroschek/home-assistant-myuplink?label=version)](https://github.com/jaroschek/home-assistant-myuplink/releases/latest)
 [![Validate for HACS](https://github.com/jaroschek/home-assistant-myuplink/workflows/Validate%20for%20HACS/badge.svg)](https://github.com/jaroschek/home-assistant-myuplink/actions/workflows/hacs.yaml)
