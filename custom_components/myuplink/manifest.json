@@ -1,10 +1,10 @@
 {
   "domain": "myuplink",
   "name": "myUplink",
-  "codeowners": ["@jaroschek"],
+  "codeowners": ["@oggali"],
   "config_flow": true,
   "dependencies": ["application_credentials"],
-  "documentation": "https://github.com/jaroschek/home-assistant-myuplink",
+  "documentation": "https://github.com/oggali/home-assistant-myuplink",
   "homekit": {},
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/jaroschek/home-assistant-myuplink/issues",
