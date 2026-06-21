@@ -75,11 +75,30 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             {"hypothesisId": "D", "location": "__init__.py:30", "error": repr(_e)},
         )
     # #endregion
-    implementation = (
-        await config_entry_oauth2_flow.async_get_config_entry_implementation(
-            hass, entry
+    try:
+        implementation = (
+            await config_entry_oauth2_flow.async_get_config_entry_implementation(
+                hass, entry
+            )
         )
-    )
+    except ValueError as err:
+        # #region agent log
+        _LOGGER.warning(
+            "DEBUG-92f69f %s",
+            {
+                "runId": "post-fix",
+                "hypothesisId": "A,B",
+                "location": "__init__.py:implementation",
+                "message": "implementation unavailable -> raising ConfigEntryAuthFailed",
+                "error": repr(err),
+            },
+        )
+        # #endregion
+        raise ConfigEntryAuthFailed(
+            "myUplink OAuth2 implementation is not available. The linked application "
+            "credential no longer exists; please re-add the application credential and "
+            "reauthenticate."
+        ) from err
 
     session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
     auth = AsyncConfigEntryAuth(aiohttp_client.async_get_clientsession(hass), session)
