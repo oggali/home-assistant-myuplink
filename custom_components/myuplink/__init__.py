@@ -27,54 +27,6 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up myUplink from a config entry."""
-    # #region agent log
-    try:
-        import json as _json
-
-        _impls = await config_entry_oauth2_flow.async_get_implementations(
-            hass, entry.domain
-        )
-        _stored_creds = []
-        try:
-            _ac = hass.data.get("application_credentials")
-            _coll = _ac.get("storage") if isinstance(_ac, dict) else _ac
-            _items = _coll.async_items() if hasattr(_coll, "async_items") else []
-            for _it in _items:
-                _get = _it.get if isinstance(_it, dict) else lambda k: getattr(_it, k, None)
-                _stored_creds.append(
-                    {
-                        "id": _get("id"),
-                        "domain": _get("domain"),
-                        "auth_domain": _get("auth_domain"),
-                        "name": _get("name"),
-                    }
-                )
-        except Exception as _ce:  # noqa: BLE001
-            _stored_creds = [{"inspect_error": repr(_ce)}]
-        _LOGGER.warning(
-            "DEBUG-92f69f %s",
-            _json.dumps(
-                {
-                    "hypothesisId": "A,B,C",
-                    "location": "__init__.py:30",
-                    "entry_domain": entry.domain,
-                    "auth_implementation": entry.data.get("auth_implementation"),
-                    "available_impl_keys": list(_impls.keys()),
-                    "entry_data_keys": sorted(entry.data.keys()),
-                    "application_credentials_loaded": hass.data.get(
-                        "application_credentials"
-                    )
-                    is not None,
-                    "stored_credentials": _stored_creds,
-                }
-            ),
-        )
-    except Exception as _e:  # noqa: BLE001
-        _LOGGER.warning(
-            "DEBUG-92f69f %s",
-            {"hypothesisId": "D", "location": "__init__.py:30", "error": repr(_e)},
-        )
-    # #endregion
     try:
         implementation = (
             await config_entry_oauth2_flow.async_get_config_entry_implementation(
@@ -82,18 +34,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             )
         )
     except ValueError as err:
-        # #region agent log
-        _LOGGER.warning(
-            "DEBUG-92f69f %s",
-            {
-                "runId": "post-fix",
-                "hypothesisId": "A,B",
-                "location": "__init__.py:implementation",
-                "message": "implementation unavailable -> raising ConfigEntryAuthFailed",
-                "error": repr(err),
-            },
-        )
-        # #endregion
         raise ConfigEntryAuthFailed(
             "myUplink OAuth2 implementation is not available. The linked application "
             "credential no longer exists; please re-add the application credential and "
