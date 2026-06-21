@@ -27,6 +27,34 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up myUplink from a config entry."""
+    # #region agent log
+    try:
+        import json as _json
+
+        _impls = await config_entry_oauth2_flow.async_get_implementations(
+            hass, entry.domain
+        )
+        _app_creds = hass.data.get("application_credentials")
+        _LOGGER.warning(
+            "DEBUG-92f69f %s",
+            _json.dumps(
+                {
+                    "hypothesisId": "A,B,C",
+                    "location": "__init__.py:30",
+                    "entry_domain": entry.domain,
+                    "auth_implementation": entry.data.get("auth_implementation"),
+                    "available_impl_keys": list(_impls.keys()),
+                    "entry_data_keys": sorted(entry.data.keys()),
+                    "application_credentials_loaded": _app_creds is not None,
+                }
+            ),
+        )
+    except Exception as _e:  # noqa: BLE001
+        _LOGGER.warning(
+            "DEBUG-92f69f %s",
+            {"hypothesisId": "D", "location": "__init__.py:30", "error": repr(_e)},
+        )
+    # #endregion
     implementation = (
         await config_entry_oauth2_flow.async_get_config_entry_implementation(
             hass, entry
