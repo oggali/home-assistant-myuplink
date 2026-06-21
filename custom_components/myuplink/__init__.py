@@ -34,7 +34,23 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         _impls = await config_entry_oauth2_flow.async_get_implementations(
             hass, entry.domain
         )
-        _app_creds = hass.data.get("application_credentials")
+        _stored_creds = []
+        try:
+            _ac = hass.data.get("application_credentials")
+            _coll = _ac.get("storage") if isinstance(_ac, dict) else _ac
+            _items = _coll.async_items() if hasattr(_coll, "async_items") else []
+            for _it in _items:
+                _get = _it.get if isinstance(_it, dict) else lambda k: getattr(_it, k, None)
+                _stored_creds.append(
+                    {
+                        "id": _get("id"),
+                        "domain": _get("domain"),
+                        "auth_domain": _get("auth_domain"),
+                        "name": _get("name"),
+                    }
+                )
+        except Exception as _ce:  # noqa: BLE001
+            _stored_creds = [{"inspect_error": repr(_ce)}]
         _LOGGER.warning(
             "DEBUG-92f69f %s",
             _json.dumps(
@@ -45,7 +61,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                     "auth_implementation": entry.data.get("auth_implementation"),
                     "available_impl_keys": list(_impls.keys()),
                     "entry_data_keys": sorted(entry.data.keys()),
-                    "application_credentials_loaded": _app_creds is not None,
+                    "application_credentials_loaded": hass.data.get(
+                        "application_credentials"
+                    )
+                    is not None,
+                    "stored_credentials": _stored_creds,
                 }
             ),
         )
